@@ -16,7 +16,6 @@ public class PlaneActivity extends Activity {
         PlaneView p=new PlaneView(this);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-
         p.curx = width/2;
         p.cury= height/2;
         setContentView(p);
