@@ -13,12 +13,18 @@
         <activity android:name=".PlaneActivity">
         </activity>
         <activity android:name=".ToolBarActivity">
+
         </activity>
         <activity android:name=".homework.picture">
         </activity>
         <activity android:name=".homework.phone_fenbianlv">
         </activity>
         <activity android:name=".homework.heartActivity">
+        </activity>
+        <activity android:name=".homework.homeworkActivity">
+
+        </activity>
+        <activity android:name=".hometest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

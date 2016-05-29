@@ -6,27 +6,29 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.administrator.workspace.FatherBarActivity;
 import com.example.administrator.workspace.R;
 
 /**
  * Created by pdg on 2016/5/29.
  */
-public class phone_fenbianlv extends Activity {
+public class phone_fenbianlv extends FatherBarActivity {
     TextView hight;
     TextView weight;
     TextView midu;
     TextView dp1;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void child(Bundle savedInstanceState) {
         setContentView(R.layout.phone_fenbianlv);
         hight= (TextView) findViewById(R.id.height);
         weight= (TextView) findViewById(R.id.weight);
         midu= (TextView) findViewById(R.id.text);
         dp1= (TextView) findViewById(R.id.dp);
-
     }
+
     public void  show(View view){
         DisplayMetrics dm=new DisplayMetrics();
         dm=getResources().getDisplayMetrics();
