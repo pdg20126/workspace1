@@ -14,7 +14,8 @@
         </activity>
         <activity android:name=".homework.heartActivity">
         </activity>
-        <activity android:name=".homework.homeworkActivity">
+        <activity android:name=".homework.homeworkActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
