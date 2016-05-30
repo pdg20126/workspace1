@@ -25,12 +25,12 @@ public class hometest extends Activity {
         lv= (ListView) findViewById(R.id.home_list);
         ArrayAdapter aa=new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,s);
         lv.setAdapter(aa);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i==0){
-                    ii =new Intent(hometest.this,phone_fenbianlv.class);
-                    startActivity(ii);
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            if (i==0){
+                                ii =new Intent(hometest.this,phone_fenbianlv.class);
+                                startActivity(ii);
                 }
             }
         });

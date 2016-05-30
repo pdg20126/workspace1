@@ -2,8 +2,7 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/search" android:title="搜索" android:showAsAction="always" android:actionViewClass="android.widget.SearchView" />
-    <item android:showAsAction="always" android:title="搜索" android:id="@+id/back" android:icon="@drawable/icon_13">
-
+    <item android:showAsAction="always" android:title="搜索" android:id="@+id/back" android:icon="@drawable/homeback">
     </item>
-    <item android:id="@+id/normal_btn" android:title="作者庞东国" android:showAsAction="never"/>
+    <item android:id="@+id/normal_btn" android:title="详细信息" android:showAsAction="never"/>
 </menu>

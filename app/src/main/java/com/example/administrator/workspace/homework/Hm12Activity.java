@@ -1,4 +1,4 @@
-package com.example.administrator.workspace;
+package com.example.administrator.workspace.homework;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,15 +7,17 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.administrator.workspace.*;
+import com.example.administrator.workspace.homework.FatherBarActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
-
 
 
 /**
  * Created by Administrator on 2016/5/25.
  */
-public class Hm12Activity extends Activity {
+public class Hm12Activity extends FatherBarActivity {
     Handler h=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -32,13 +34,13 @@ public class Hm12Activity extends Activity {
 
     Button btn;
     Timer t;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void child(Bundle savedInstanceState) {
         setContentView(R.layout.hm12_layout);
         btn= (Button) findViewById(R.id.send);
-
     }
+
     public void sendMsg(View view){
         btn.setEnabled(false);
         btn.setText("获取中");

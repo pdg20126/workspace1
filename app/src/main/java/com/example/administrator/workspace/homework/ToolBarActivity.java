@@ -1,4 +1,4 @@
-package com.example.administrator.workspace;
+package com.example.administrator.workspace.homework;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -6,6 +6,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.example.administrator.workspace.*;
+import com.example.administrator.workspace.homework.FatherBarActivity;
 
 import java.util.List;
 

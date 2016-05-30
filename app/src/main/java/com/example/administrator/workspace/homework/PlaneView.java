@@ -1,4 +1,4 @@
-package com.example.administrator.workspace;
+package com.example.administrator.workspace.homework;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.example.administrator.workspace.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,7 @@ public class PlaneView extends View implements View.OnTouchListener{
    float dy,ay;
     boolean bl=true;
     boolean bl1=true;
-    List<bullet_bean> list=new ArrayList<bullet_bean>();
+    List<com.example.administrator.workspace.homework.bullet_bean> list=new ArrayList<com.example.administrator.workspace.homework.bullet_bean>();
     public PlaneView(Context context) {
         super(context);
         plane= BitmapFactory.decodeResource(getResources(), R.drawable.plane);
@@ -88,7 +90,7 @@ public class PlaneView extends View implements View.OnTouchListener{
                         public void run() {
                             super.run();
                             while (true){
-                                bullet_bean bb=new bullet_bean();
+                                com.example.administrator.workspace.homework.bullet_bean bb=new bullet_bean();
                                 bb.setX(curx+plane.getWidth()-bullet.getWidth()+20);
                                 bb.setY(cury-50);
                                 list.add(bb);

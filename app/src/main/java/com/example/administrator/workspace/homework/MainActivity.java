@@ -1,7 +1,9 @@
-package com.example.administrator.workspace;
+package com.example.administrator.workspace.homework;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.administrator.workspace.R;
 
 public class MainActivity extends AppCompatActivity {
 
