@@ -10,7 +10,7 @@ public class planeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        PlaneView p=new PlaneView(this);
+        hm09_plan_Activity p=new hm09_plan_Activity(this);
          p.setOnTouchListener(p);
         setContentView(p);
 
