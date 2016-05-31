@@ -17,8 +17,7 @@
             android:title="性别"
             android:summary="选择您的性别"
             android:dialogTitle="ListPreference"
-            android:entries="@array/gener_name_list"
-            android:entryValues="@array/gener_name_list" />
+         />
     </PreferenceCategory>
     <PreferenceCategory android:title="系统功能设置组">
         <CheckBoxPreference
