@@ -16,17 +16,37 @@ import com.example.administrator.workspace.R;
  */
 public class hm09_plan_Activity extends View implements View.OnTouchListener {
     Bitmap plane;
+    Bitmap bullet;
     Matrix m;
-
+    Canvas c;
+    float bullety;
     float x,y,curx,cury,dx,dy;
 
     public hm09_plan_Activity(Context context) {
         super(context);
         plane= BitmapFactory.decodeResource(getResources(),R.drawable.plane);
-        m=new Matrix();
-        m.setScale(6,7);
+        bullet=BitmapFactory.decodeResource(getResources(),R.drawable.bullet_04);
         setOnTouchListener(this);
+    }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        x=event.getX();
+        y=event.getY();
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                dx=x-curx;
+                dy=y-cury;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                curx=x-dx;
+                cury=y-dy;
+                bullety=cury-plane.getHeight();
+                bullety=bullety-20;
+                break;
+        }
+        invalidate();
+        return true;
     }
 
     @Override
@@ -34,29 +54,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
         super.onDraw(canvas);
         Paint p=new Paint();
         canvas.drawBitmap(plane,curx,cury,p);
+        canvas.drawBitmap(bullet,curx-20,bullety,p);
 
-
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        curx=event.getX();
-        cury=event.getY();
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                if(!(x>=curx && x<=curx+plane.getWidth()) || !(y>=cury && y<=cury+plane.getHeight()))
-                {
-                    return true;
-                }
-                dx = x - curx;
-                dy = y - cury;
-            case MotionEvent.ACTION_MOVE:
-                //case MotionEvent.ACTION_CANCEL:
-                curx = x - dx;
-                cury = y - dy;
-                invalidate();
-                return true;
-        }
-        return true;
     }
 }
