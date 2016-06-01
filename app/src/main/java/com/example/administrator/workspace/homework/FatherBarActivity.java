@@ -31,9 +31,7 @@ public abstract class FatherBarActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
-                    case  R.id.back :
-                        startActivity(i);
-                        break;
+
                     case R.id.normal_btn:
                         AlertDialog.Builder adb=new AlertDialog.Builder(FatherBarActivity.this);
                         adb.setTitle("~~~作者~~~");

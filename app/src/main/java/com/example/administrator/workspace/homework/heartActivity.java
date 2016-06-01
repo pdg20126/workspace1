@@ -10,7 +10,7 @@ public class heartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myview m=new myview(this);
+        heartbufferview m=new heartbufferview(this);
         m.setOnTouchListener(m);
         setContentView(m);
 

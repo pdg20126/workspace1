@@ -1,6 +1,7 @@
 package com.example.administrator.workspace.homework;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.MotionEvent;
@@ -15,6 +16,7 @@ import butterknife.OnTouch;
  * Created by pdg on 2016/5/29.
  */
 public class myview extends View  implements View.OnTouchListener{
+    Bitmap bt;
     List<heartbean> list=new ArrayList<heartbean>();
     public myview(Context context) {
         super(context);
