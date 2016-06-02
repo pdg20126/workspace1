@@ -114,8 +114,6 @@ public class PlaneView extends View implements View.OnTouchListener{
 
     }
 
-
-
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         float x=event.getX();
