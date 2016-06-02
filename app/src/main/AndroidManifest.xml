@@ -32,8 +32,8 @@
         </activity>
         <activity android:name=".homework.Hm12Activity">
         </activity>
-     <activity android:name=".homework.ToolBarActivity">
-     </activity>
+         <activity android:name=".homework.ToolBarActivity">
+        </activity>
         <activity android:name=".homework.Telphone_Activity">
         </activity>
         <activity android:name=".homework.hm25_city_Activity">
@@ -41,14 +41,12 @@
         <activity android:name=".homework.hm25_city2_Activity">
         </activity>
         <activity android:name=".homework.planeActivity">
-
         </activity>
             <activity android:name=".homework.hm35_animationActivity">
             </activity>
         <activity android:name=".homework.hm_board_1_Activity">
         </activity><activity android:name=".homework.hm_loadfile_Activity"></activity>
         <activity android:name=".test1">
-
         </activity>
 
     </application>
