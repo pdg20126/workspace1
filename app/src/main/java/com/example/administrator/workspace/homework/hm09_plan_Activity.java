@@ -9,6 +9,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -34,7 +35,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
     Bitmap plane;
     Bitmap bullet;
     Bitmap enemyBitmap;
-
+    Bitmap enemyBitmap2;
     Matrix m;
     Canvas c;
     float bullety;
@@ -44,6 +45,8 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
     Timer t;
     Timer t2;
     Timer t3;
+    int height;
+    int weight;
     boolean flag=true;
     boolean flag1=true;
     List<bullet_bean> list=new ArrayList<bullet_bean>();
@@ -53,7 +56,17 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
         plane= BitmapFactory.decodeResource(getResources(),R.drawable.plane_1);
         bullet=BitmapFactory.decodeResource(getResources(),R.drawable.bullet_04);
         enemyBitmap=BitmapFactory.decodeResource(getResources(),R.drawable.plane_1);
+        Matrix m2=new Matrix();
+        m2.setRotate(180);
+        Bitmap bb=Bitmap.createBitmap(enemyBitmap,0,0,enemyBitmap.getWidth(),enemyBitmap.getHeight(),m2,false);
+        Matrix m3=new Matrix();
+        m3.setScale(0.5f,0.5f);
+        enemyBitmap2=Bitmap.createBitmap(bb,0,0,enemyBitmap.getWidth(),enemyBitmap.getHeight(),m3,false);
         setOnTouchListener(this);
+        DisplayMetrics dm=new DisplayMetrics();
+        dm=getResources().getDisplayMetrics();
+        height=dm.heightPixels;
+        weight=dm.widthPixels;
     }
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -63,12 +76,14 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
             case MotionEvent.ACTION_DOWN:
                 dx=x-curx;
                 dy=y-cury;
-                if (flag){
+
+             if (flag){
                     refresh();
                     flag=false;
                 }
                 addbullet();
                 addenemy();
+                break;
             case MotionEvent.ACTION_MOVE:
                 curx=x-dx;
                 cury=y-dy;
@@ -77,6 +92,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
             case  MotionEvent.ACTION_UP:
                 t.cancel();
                 t2.cancel();
+                t3.cancel();
                 break;
         }
         invalidate();
@@ -97,7 +113,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
             }
         },0,60);
     }
-    public  void refresh(){
+  public  void refresh(){
         t2=new Timer();
         t2.schedule(new TimerTask() {
             @Override
@@ -108,9 +124,9 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
     }
     public  void setenemy(){
         enemy_bean eb=new enemy_bean();
-        int xx= (int) (Math.random()*900+20);
+        int xx= (int) (Math.random()*weight);
         eb.setX(xx);
-        eb.setY(-150);
+        eb.setY(-50);
         list1.add(eb);
     }
     public  void addenemy(){
@@ -127,27 +143,29 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
         super.onDraw(canvas);
         Paint p=new Paint();
         p.setStrokeWidth(10);
-       // p.setColor(Color.RED);
         canvas.drawBitmap(plane,curx,cury,p);
-        if (list.size()!=0){
-            for (int i=list.size()-1;i>=0;i--){
-                bullet_bean  b1=list.get(i);
-                b1.setY(b1.getY()-40);
-                canvas.drawLine(b1.getX()+(plane.getWidth()/2),b1.getY(),b1.getX()+(plane.getWidth()/2),b1.getY()-20,p);
-               // canvas.drawLine(b1.getX()+(plane.getWidth()/2)+20,b1.getY(),b1.getX()+(plane.getWidth()/2)+20,b1.getY()-20,p);
-                if (b1.getY()<=0){
-                    list.remove(i--);
+            if (list.size()!=0){
+                for (int i=list.size()-1;i>=0;i--){
+                    bullet_bean  b1=list.get(i);
+                    b1.setY(b1.getY()-40);
+                    canvas.drawLine(b1.getX()+(plane.getWidth()/2),b1.getY(),b1.getX()+(plane.getWidth()/2),b1.getY()-20,p);
+                    // canvas.drawLine(b1.getX()+(plane.getWidth()/2)+20,b1.getY(),b1.getX()+(plane.getWidth()/2)+20,b1.getY()-20,p);
+                    if (b1.getY()<=50){
+                        list.remove(i--);
+                    }
+
                 }
-            }
         }
         if(list1.size() != 0){
             for(int i=list1.size()-1;i>=0;i--){
                 enemy_bean d = list1.get(i);
-                d.setY(d.getY()+100);
-                canvas.drawBitmap(enemyBitmap,d.getX(),d.getY(),p);
-                if(d.getY()>700){
+                bullet_bean b=list.get(i);
+                d.setY(d.getY()+20);
+                canvas.drawBitmap(enemyBitmap2,d.getX(),d.getY(),p);
+                if(d.getY()>height){
                     list1.remove(i--);
                 }
+
             }
         }
 
