@@ -48,7 +48,10 @@
         </activity><activity android:name=".homework.hm_loadfile_Activity"></activity>
         <activity android:name=".test1">
         </activity>
-
+        <activity android:name=".homework.hm01_helloworldActivity">
+        </activity>
+        <activity android:name=".homework.hm02_image_Activity"></activity>
+        <activity android:name=".homework.hm06_01_Activity"></activity>
     </application>
 
 </manifest>

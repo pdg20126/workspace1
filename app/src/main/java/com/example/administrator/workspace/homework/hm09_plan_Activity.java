@@ -168,7 +168,25 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
 
             }
         }
+        (new Thread(){
+            @Override
+            public void run() {
+               if(list.size()!=0&&list1.size()!=0){
+                  for(int i=list.size();i<list.size();i--){
+                      int  bbx=(int )list.get(i).getX();
+                      int bby=(int)list.get(i).getY();
+                      int ebx=list1.get(i).getX();
+                      int eby=list1.get(i).getY();
+                      if (bbx==ebx&&bby==eby){
+                          list.remove(i);
+                          list1.remove(i);
+                      }
 
+                  }
+
+               }
+            }
+        }).start();
 
     }
 }
