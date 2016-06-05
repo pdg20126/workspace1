@@ -23,10 +23,7 @@
         </activity>
         <activity android:name=".homework.homeworkActivity"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".homework.home_picture">
         </activity>
@@ -41,6 +38,10 @@
         <activity android:name=".homework.hm25_city2_Activity">
         </activity>
         <activity android:name=".homework.planeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
             <activity android:name=".homework.hm35_animationActivity">
             </activity>
@@ -52,6 +53,7 @@
         </activity>
         <activity android:name=".homework.hm02_image_Activity"></activity>
         <activity android:name=".homework.hm06_01_Activity"></activity>
+
     </application>
 
 </manifest>

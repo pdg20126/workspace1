@@ -24,11 +24,14 @@ import java.util.TimerTask;
  * Created by Administrator on 2016/5/31.
  */
 public class hm09_plan_Activity extends View implements View.OnTouchListener {
-    Handler h=new Handler(){
+   Handler h=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            invalidate();
+
+                invalidate();
+
+
 
         }
     };
@@ -72,17 +75,105 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
         x=event.getX();
         y=event.getY();
+        if (flag1){
+            flag1=false;
+            (new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    while(cury>height){
+                        try {
+                            sleep(20);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        cury-=5;
+                        Message m=new Message();
+                        m.what=000;
+                        h.sendMessage(m);
+                    }
+
+                }
+            }).start();
+
+        }
+        if (flag){
+            flag=false;
+            (new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    while (true){
+                        bullet_bean b=new bullet_bean();
+                        b.setX(curx+plane.getWidth()/2);
+                        b.setY(cury-50);
+                        list.add(b);
+                        try {
+                            sleep(20);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }).start();
+            (new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    while (true){
+                        int x= (int) (Math.random()*weight);
+                        enemy_bean eb=new enemy_bean();
+                        eb.setX(x);
+                        eb.setY(-50);
+                        list1.add(eb);
+                        try {
+                            sleep(300);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }).start();
+            (new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    if (list.size()!=0){
+                        for (int i=0;i<list.size();i++){
+                            if (list.get(i).getY()==0){
+                                list.remove(i);
+                            }
+                        }
+                    }
+                    if (list1.size()!=0){
+                        for (int j=0;j<list1.size();j++){
+                            if (list1.get(j).getY()>height){
+                                list1.remove(j);
+                            }
+                        }
+                    }
+                    Message m = new Message();
+                    m.what = 1;
+                    h.sendMessage(m);
+                    try {
+                        sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        }
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 dx=x-curx;
                 dy=y-cury;
 
-             if (flag){
+          /*   if (flag){
                     refresh();
                     flag=false;
                 }
                 addbullet();
-                addenemy();
+                addenemy();*/
                 break;
             case MotionEvent.ACTION_MOVE:
                 curx=x-dx;
@@ -90,19 +181,16 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 bullety=cury-plane.getHeight();
                 break;
             case  MotionEvent.ACTION_UP:
-                t.cancel();
+         /*       t.cancel();
                 t2.cancel();
-                t3.cancel();
+                t3.cancel();*/
                 break;
         }
         invalidate();
         return true;
     }
-    public  void setbullet(){
-        bullet_bean b=new bullet_bean();
-        b.setX(curx);
-        b.setY(cury);
-        list.add(b);
+/*    public  void setbullet(){
+
     }
     public void addbullet(){
         t=new Timer();
@@ -137,26 +225,36 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 setenemy();
             }
         },0,500);
-    }
+    }*/
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint p=new Paint();
         p.setStrokeWidth(10);
         canvas.drawBitmap(plane,curx,cury,p);
-            if (list.size()!=0){
-                for (int i=list.size()-1;i>=0;i--){
-                    bullet_bean  b1=list.get(i);
-                    b1.setY(b1.getY()-40);
-                    canvas.drawLine(b1.getX()+(plane.getWidth()/2),b1.getY(),b1.getX()+(plane.getWidth()/2),b1.getY()-20,p);
-                    // canvas.drawLine(b1.getX()+(plane.getWidth()/2)+20,b1.getY(),b1.getX()+(plane.getWidth()/2)+20,b1.getY()-20,p);
-                    if (b1.getY()<=50){
-                        list.remove(i--);
+        if(list.size()!=0&&list1.size()!=0){
+            for(int i=list.size();i<list.size();i--){
+                for (int j=list1.size();j<list1.size();j--){
+                    int  bbx=(int )list.get(i).getX();
+                    int bby=(int)list.get(i).getY();
+                    int ebx=list1.get(i).getX();
+                    int eby=list1.get(i).getY();
+                    if (bbx>ebx&&bbx<ebx+enemyBitmap.getWidth()){
+                        if(bby<bby+enemyBitmap.getHeight()&&bby>eby){
+                            list.remove(i);
+                            list1.remove(j);
+                            break;
+                        }
                     }
-
                 }
-        }
-        if(list1.size() != 0){
+            }
+            for (int i=0;i<list.size();i++){
+                bullet_bean  b1=list.get(i);
+                b1.setY(b1.getY()-40);
+                canvas.drawLine(b1.getX(),b1.getY(),b1.getX(),b1.getY()-20,p);
+                // canvas.drawLine(b1.getX()+(plane.getWidth()/2)+20,b1.getY(),b1.getX()+(plane.getWidth()/2)+20,b1.getY()-20,p);
+
+            }
             for(int i=list1.size()-1;i>=0;i--){
                 enemy_bean d = list1.get(i);
                 bullet_bean b=list.get(i);
@@ -166,27 +264,19 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                     list1.remove(i--);
                 }
 
+        }
+          /*  if (list.size()!=0){
+
+        }
+        if(list1.size() != 0){
+
+
+            }*/
+        }
+
+
             }
         }
-        (new Thread(){
-            @Override
-            public void run() {
-               if(list.size()!=0&&list1.size()!=0){
-                  for(int i=list.size();i<list.size();i--){
-                      int  bbx=(int )list.get(i).getX();
-                      int bby=(int)list.get(i).getY();
-                      int ebx=list1.get(i).getX();
-                      int eby=list1.get(i).getY();
-                      if (bbx==ebx&&bby==eby){
-                          list.remove(i);
-                          list1.remove(i);
-                      }
 
-                  }
 
-               }
-            }
-        }).start();
 
-    }
-}
