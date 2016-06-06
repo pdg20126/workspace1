@@ -28,11 +28,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-
                 invalidate();
-
-
-
         }
     };
     Bitmap plane;
@@ -84,12 +80,13 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                     while(cury>height){
                         try {
                             sleep(20);
+
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         cury-=5;
                         Message m=new Message();
-                        m.what=000;
+                        m.what=1;
                         h.sendMessage(m);
                     }
 
@@ -106,14 +103,20 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                     while (true){
                         bullet_bean b=new bullet_bean();
                         b.setX(curx+plane.getWidth()/2);
-                        b.setY(cury-50);
+                        b.setY(cury-20);
                         list.add(b);
                         try {
-                            sleep(20);
+                            sleep(50);;
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        cury-=5;
+                        Message m=new Message();
+                        m.what=1;
+                        h.sendMessage(m);
+
                     }
+
                 }
             }).start();
             (new Thread(){
@@ -131,9 +134,14 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
+                        Message m=new Message();
+                        m.what=1;
+                        h.sendMessage(m);
                     }
                 }
             }).start();
+
             (new Thread(){
                 @Override
                 public void run() {
@@ -152,28 +160,22 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                             }
                         }
                     }
-                    Message m = new Message();
-                    m.what = 1;
-                    h.sendMessage(m);
                     try {
                         sleep(10);
+
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                  ;
+
                 }
             }).start();
+
         }
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 dx=x-curx;
                 dy=y-cury;
-
-          /*   if (flag){
-                    refresh();
-                    flag=false;
-                }
-                addbullet();
-                addenemy();*/
                 break;
             case MotionEvent.ACTION_MOVE:
                 curx=x-dx;
@@ -181,51 +183,10 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 bullety=cury-plane.getHeight();
                 break;
             case  MotionEvent.ACTION_UP:
-         /*       t.cancel();
-                t2.cancel();
-                t3.cancel();*/
                 break;
         }
-        invalidate();
         return true;
     }
-/*    public  void setbullet(){
-
-    }
-    public void addbullet(){
-        t=new Timer();
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                setbullet();
-            }
-        },0,60);
-    }
-  public  void refresh(){
-        t2=new Timer();
-        t2.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                h.sendMessage(new Message());
-            }
-        },0,3000);
-    }
-    public  void setenemy(){
-        enemy_bean eb=new enemy_bean();
-        int xx= (int) (Math.random()*weight);
-        eb.setX(xx);
-        eb.setY(-50);
-        list1.add(eb);
-    }
-    public  void addenemy(){
-        t3=new Timer();
-        t3.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                setenemy();
-            }
-        },0,500);
-    }*/
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -265,16 +226,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 }
 
         }
-          /*  if (list.size()!=0){
-
         }
-        if(list1.size() != 0){
-
-
-            }*/
-        }
-
-
             }
         }
 
