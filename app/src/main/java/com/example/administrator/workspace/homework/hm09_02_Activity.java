@@ -14,7 +14,7 @@ public class hm09_02_Activity extends FatherBarActivity {
     public void child(Bundle savedInstanceState) {
         setContentView(R.layout.hm09_02__layout);
         qcb= (QuickContactBadge) findViewById(R.id.badge);
-        qcb.assignContactFromPhone("18600340215",false);
+        qcb.assignContactFromPhone("4008308300",true);
 
     }
 }

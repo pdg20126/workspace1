@@ -28,7 +28,9 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+
                 invalidate();
+
         }
     };
     Bitmap plane;
@@ -39,8 +41,8 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
     Canvas c;
     float bullety;
     float x,y,dx,dy;
-    float curx=500;
-    float cury=800;
+    float curx;
+    float cury;
     Timer t;
     Timer t2;
     Timer t3;
@@ -77,10 +79,9 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 @Override
                 public void run() {
                     super.run();
-                    while(cury>height){
+                    while(cury>1500){
                         try {
                             sleep(20);
-
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -89,10 +90,9 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                         m.what=1;
                         h.sendMessage(m);
                     }
-
                 }
             }).start();
-
+            flag=true;
         }
         if (flag){
             flag=false;
@@ -100,78 +100,23 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 @Override
                 public void run() {
                     super.run();
-                    while (true){
-                        bullet_bean b=new bullet_bean();
-                        b.setX(curx+plane.getWidth()/2);
-                        b.setY(cury-20);
-                        list.add(b);
+                    while(true){
+                        bullet_bean bb=new bullet_bean();
+                        bb.setX(curx+plane.getWidth()/2);
+                        bb.setY(cury);
+                        list.add(bb);
                         try {
-                            sleep(50);;
+                            sleep(10);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        cury-=5;
                         Message m=new Message();
-                        m.what=1;
-                        h.sendMessage(m);
-
-                    }
-
-                }
-            }).start();
-            (new Thread(){
-                @Override
-                public void run() {
-                    super.run();
-                    while (true){
-                        int x= (int) (Math.random()*weight);
-                        enemy_bean eb=new enemy_bean();
-                        eb.setX(x);
-                        eb.setY(-50);
-                        list1.add(eb);
-                        try {
-                            sleep(300);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        Message m=new Message();
-                        m.what=1;
                         h.sendMessage(m);
                     }
                 }
             }).start();
-
-            (new Thread(){
-                @Override
-                public void run() {
-                    super.run();
-                    if (list.size()!=0){
-                        for (int i=0;i<list.size();i++){
-                            if (list.get(i).getY()==0){
-                                list.remove(i);
-                            }
-                        }
-                    }
-                    if (list1.size()!=0){
-                        for (int j=0;j<list1.size();j++){
-                            if (list1.get(j).getY()>height){
-                                list1.remove(j);
-                            }
-                        }
-                    }
-                    try {
-                        sleep(10);
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                  ;
-
-                }
-            }).start();
-
         }
+
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 dx=x-curx;
@@ -184,7 +129,9 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 break;
             case  MotionEvent.ACTION_UP:
                 break;
+
         }
+        invalidate();
         return true;
     }
     @Override
@@ -193,13 +140,13 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
         Paint p=new Paint();
         p.setStrokeWidth(10);
         canvas.drawBitmap(plane,curx,cury,p);
-        if(list.size()!=0&&list1.size()!=0){
+/*        if(list.size()!=0&&list1.size()!=0){
             for(int i=list.size();i<list.size();i--){
                 for (int j=list1.size();j<list1.size();j--){
-                    int  bbx=(int )list.get(i).getX();
-                    int bby=(int)list.get(i).getY();
-                    int ebx=list1.get(i).getX();
-                    int eby=list1.get(i).getY();
+                    float  bbx=list.get(i).getX();
+                    float bby=list.get(i).getY();
+                    float ebx=list1.get(i).getX();
+                    float eby=list1.get(i).getY();
                     if (bbx>ebx&&bbx<ebx+enemyBitmap.getWidth()){
                         if(bby<bby+enemyBitmap.getHeight()&&bby>eby){
                             list.remove(i);
@@ -208,10 +155,10 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                         }
                     }
                 }
-            }
+            }*/
             for (int i=0;i<list.size();i++){
                 bullet_bean  b1=list.get(i);
-                b1.setY(b1.getY()-40);
+                b1.setY(b1.getY()+50);
                 canvas.drawLine(b1.getX(),b1.getY(),b1.getX(),b1.getY()-20,p);
                 // canvas.drawLine(b1.getX()+(plane.getWidth()/2)+20,b1.getY(),b1.getX()+(plane.getWidth()/2)+20,b1.getY()-20,p);
 
@@ -228,7 +175,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
         }
         }
             }
-        }
+        //}
 
 
 
