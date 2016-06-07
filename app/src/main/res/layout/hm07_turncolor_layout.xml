@@ -7,48 +7,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/t1"
-        android:width="320pt"
-        android:height="320pt"
+        android:width="260pt"
+        android:height="260pt"
         android:layout_gravity="center"
         android:background="#f00"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/t2"
-        android:width="280pt"
-        android:height="280pt"
+        android:width="220pt"
+        android:height="220pt"
         android:layout_gravity="center"
         android:background="#0f0"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/t3"
-        android:width="240pt"
-        android:height="240pt"
+        android:width="180pt"
+        android:height="180pt"
         android:layout_gravity="center"
         android:background="#00f"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/t4"
-        android:width="200pt"
-        android:height="200pt"
+        android:width="140pt"
+        android:height="140pt"
         android:layout_gravity="center"
         android:background="#ff0"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/t5"
-        android:width="160pt"
-        android:height="160pt"
+        android:width="100pt"
+        android:height="100pt"
         android:layout_gravity="center"
         android:background="#f0f"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/t6"
-        android:width="120pt"
-        android:height="120pt"
+        android:width="50pt"
+        android:height="50pt"
         android:layout_gravity="center"
         android:background="#0ff"/>
 </FrameLayout>

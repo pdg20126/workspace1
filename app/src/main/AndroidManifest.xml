@@ -44,7 +44,6 @@
         <activity android:name=".homework.hm25_city2_Activity">
         </activity>
         <activity android:name=".homework.planeActivity">
-
         </activity>
             <activity android:name=".homework.hm35_animationActivity">
             </activity>
@@ -58,6 +57,9 @@
         <activity android:name=".homework.hm06_01_Activity"></activity>
         <activity android:name=".homework.hm_baiduspeakerActivity"></activity>
         <activity android:name=".homework.hm_Provider_Activity"></activity>
+        <activity android:name=".homework.hm07_turncolor_Activity"></activity>
+        <activity android:name=".homework.hm08_buju_Activity"></activity>
+        <activity android:name=".homework.hm9_caiculator_Activity"></activity>
     </application>
 
 </manifest>
