@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <application
         android:allowBackup="true"
@@ -61,6 +63,7 @@
         <activity android:name=".homework.hm08_buju_Activity"></activity>
         <activity android:name=".homework.hm9_caiculator_Activity"></activity>
         <activity android:name=".homework.hm09_02_Activity"></activity>
+        <activity android:name=".homework.hm_video_Activity"></activity>
     </application>
 
 </manifest>
