@@ -16,9 +16,9 @@ import com.example.administrator.workspace.R;
 public class homeworkActivity extends FatherBarActivity {
 
     ListView lv;
-    String[]s={"作业1：hello world！","作业2：放一个图片","作业3：获取手机分辨率","作业4：点击图片循环","作业5：画出心形","作业6：布局1","作业6：布局2","作业7：霓虹灯","作业8：位置布局","作业9：计算器","作业9_1：飞机","作业9_02:关联电话号码","video","短信验证测试框","回到桌面查看联系人发送短信","选择省份城市","frame动画","画板","下载任务","百度tts","共享stuDB","radio练习"
+    String[]s={"作业1：hello world！","作业2：放一个图片","作业3：获取手机分辨率","作业4：点击图片循环","作业5：画出心形","作业6：布局1","作业6：布局2","作业7：霓虹灯","作业8：位置布局","作业9：计算器","作业9_1：飞机","作业9_02:关联电话号码","video","音频录制","录制视频","短信验证测试框","回到桌面查看联系人发送短信","选择省份城市","frame动画","画板","下载任务","百度tts","共享stuDB","radio练习"
             ,"局部显示图片","图片上传","完成自动搜索","仿照淘宝做listview","做一个搜索框","toast3个选项卡","国际化设置","异步任务的下载显示进度条","横竖屏" };
-     Class []bb={hm01_helloworldActivity.class,hm02_image_Activity.class,phone_fenbianlv.class,home_picture.class,heartActivity.class,hm06_01_Activity.class ,hm06_02_Activity.class,hm07_turncolor_Activity.class,hm08_buju_Activity.class,hm9_caiculator_Activity.class,planeActivity.class,hm09_02_Activity.class,hm_video_Activity.class,Hm12Activity.class,Telphone_Activity.class,hm25_city_Activity.class,hm35_animationActivity.class,hm_board_1_Activity.class
+     Class []bb={hm01_helloworldActivity.class,hm02_image_Activity.class,phone_fenbianlv.class,home_picture.class,heartActivity.class,hm06_01_Activity.class ,hm06_02_Activity.class,hm07_turncolor_Activity.class,hm08_buju_Activity.class,hm9_caiculator_Activity.class,planeActivity.class,hm09_02_Activity.class,hm_video_Activity.class,hm_recorder_activity.class,hm_recodervideo_Activity.class,Hm12Activity.class,Telphone_Activity.class,hm25_city_Activity.class,hm35_animationActivity.class,hm_board_1_Activity.class
 ,hm_loadfile_Activity.class,hm_baiduspeakerActivity.class,hm_Provider_Activity.class};
     @Override
     public void child(Bundle savedInstanceState) {

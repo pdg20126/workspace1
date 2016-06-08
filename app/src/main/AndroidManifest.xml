@@ -12,7 +12,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -64,6 +66,8 @@
         <activity android:name=".homework.hm9_caiculator_Activity"></activity>
         <activity android:name=".homework.hm09_02_Activity"></activity>
         <activity android:name=".homework.hm_video_Activity"></activity>
+        <activity android:name=".homework.hm_recorder_activity"></activity>
+        <activity android:name=".homework.hm_recodervideo_Activity"></activity>
     </application>
 
 </manifest>

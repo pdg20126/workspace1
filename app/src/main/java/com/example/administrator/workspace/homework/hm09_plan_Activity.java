@@ -27,9 +27,11 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
    Handler h=new Handler(){
         @Override
         public void handleMessage(Message msg) {
+
+            invalidate();
             super.handleMessage(msg);
 
-                invalidate();
+
 
         }
     };
@@ -85,7 +87,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        cury-=5;
+                        cury+=5;
                         Message m=new Message();
                         m.what=1;
                         h.sendMessage(m);
@@ -103,7 +105,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                     while(true){
                         bullet_bean bb=new bullet_bean();
                         bb.setX(curx+plane.getWidth()/2);
-                        bb.setY(cury);
+                        bb.setY((cury+plane.getHeight()));
                         list.add(bb);
                         try {
                             sleep(10);
@@ -112,6 +114,24 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                         }
                         Message m=new Message();
                         h.sendMessage(m);
+                    }
+                }
+            }).start();
+            (new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    while(true){
+                        enemy_bean eb=new enemy_bean();
+                        float cx= (float) (Math.random()*height);
+                        eb.setX(cx);
+                        eb.setY(0);
+                        list1.add(eb);
+                        try {
+                            sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }).start();
@@ -131,7 +151,6 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                 break;
 
         }
-        invalidate();
         return true;
     }
     @Override
@@ -159,7 +178,8 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
             for (int i=0;i<list.size();i++){
                 bullet_bean  b1=list.get(i);
                 b1.setY(b1.getY()+50);
-                canvas.drawLine(b1.getX(),b1.getY(),b1.getX(),b1.getY()-20,p);
+                canvas.drawRect(b1.getX(),5,b1.getY(),5,p);
+              //  canvas.drawLine(b1.getX(),b1.getY(),b1.getX(),b1.getY()+20,p);
                 // canvas.drawLine(b1.getX()+(plane.getWidth()/2)+20,b1.getY(),b1.getX()+(plane.getWidth()/2)+20,b1.getY()-20,p);
 
             }
