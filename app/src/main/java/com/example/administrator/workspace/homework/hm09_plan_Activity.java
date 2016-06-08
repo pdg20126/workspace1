@@ -105,7 +105,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
                     while(true){
                         bullet_bean bb=new bullet_bean();
                         bb.setX(curx+plane.getWidth()/2);
-                        bb.setY((cury+plane.getHeight()));
+                        bb.setY(dy);
                         list.add(bb);
                         try {
                             sleep(10);
@@ -178,7 +178,7 @@ public class hm09_plan_Activity extends View implements View.OnTouchListener {
             for (int i=0;i<list.size();i++){
                 bullet_bean  b1=list.get(i);
                 b1.setY(b1.getY()+50);
-                canvas.drawRect(b1.getX(),5,b1.getY(),5,p);
+               canvas.drawLine(b1.getX(),b1.getY(),b1.getX(),b1.getY()-20,p);
               //  canvas.drawLine(b1.getX(),b1.getY(),b1.getX(),b1.getY()+20,p);
                 // canvas.drawLine(b1.getX()+(plane.getWidth()/2)+20,b1.getY(),b1.getX()+(plane.getWidth()/2)+20,b1.getY()-20,p);
 
