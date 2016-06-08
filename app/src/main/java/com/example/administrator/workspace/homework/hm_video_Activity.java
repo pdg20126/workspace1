@@ -23,7 +23,8 @@ public class hm_video_Activity extends Activity {
         videoView= (VideoView) findViewById(R.id.video);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         mc=new MediaController(this);
-        File video=new File("/mnt/sdcard/mm.mp4");
+       // File video=new File("/mnt/sdcard/mm.mp4");
+        File video=new File("mnt/sdcard/myvideo.mp4");
         if (video.exists()){
             videoView.setVideoPath(video.getAbsolutePath());
             videoView.setMediaController(mc);

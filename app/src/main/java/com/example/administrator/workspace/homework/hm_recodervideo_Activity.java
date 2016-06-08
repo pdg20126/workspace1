@@ -31,7 +31,7 @@ public class hm_recodervideo_Activity extends FatherBarActivity {
     }
     public void record(View view)
     {
-        file = new File(getFilesDir().getAbsolutePath()+"/myvideo.mp4");
+        file = new File("mnt/sdcard/myvideo.mp4");
 
         try{
             recorder = new MediaRecorder();
@@ -41,12 +41,10 @@ public class hm_recodervideo_Activity extends FatherBarActivity {
             recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
             recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
             recorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
-            recorder.setVideoSize(320,280);
-            recorder.setVideoFrameRate(4);
+            //recorder.setVideoSize(320,280);
+           //recorder.setVideoFrameRate(4);
             recorder.setOutputFile(file.getAbsolutePath());
-
             recorder.setPreviewDisplay(sv.getHolder().getSurface());
-
             recorder.prepare();
             recorder.start();
             running = true;
