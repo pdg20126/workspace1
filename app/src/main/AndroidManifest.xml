@@ -77,6 +77,16 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <activity android:name=".homework.hm12_02_phone_city_activity"></activity>
+        <activity android:name=".homework.hm13_openlist_activity"></activity>
+        <activity android:name=".homework.hm13_02_spinner_activity"></activity>
+        <activity android:name=".homework.hm13_03_taobao_activity"></activity>
+        <activity android:name=".homework.hm14_turnview_activity"></activity>
+        <activity android:name=".homework.hm15_autosearch_activity"></activity>
+        <activity android:name=".homework.hm17_gridview_activity"></activity>
+        <activity android:name=".homework.hm19_birthday_01_activity"></activity>
+        <activity android:name=".homework.hm19_birthday_02_activity"></activity>
+        <activity android:name=".homework.hm20_tabhost_activity"></activity>
+        <activity android:name=".homework.hm23_much_dialog_activity"></activity>
     </application>
 
 </manifest>
