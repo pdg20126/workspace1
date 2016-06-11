@@ -68,6 +68,15 @@
         <activity android:name=".homework.hm_video_Activity"></activity>
         <activity android:name=".homework.hm_recorder_activity"></activity>
         <activity android:name=".homework.hm_recodervideo_Activity"></activity>
+        <activity android:name=".homework.hm10_qq_Activity"></activity>
+        <activity android:name=".homework.hm10_02_search_Activity"></activity>
+        <activity android:name=".homework.hm11_radio_activity">
+        </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <activity android:name=".homework.hm12_02_phone_city_activity"></activity>
     </application>
 
 </manifest>
