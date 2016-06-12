@@ -88,6 +88,9 @@
         <activity android:name=".homework.hm20_tabhost_activity"></activity>
         <activity android:name=".homework.hm23_much_dialog_activity"></activity>
         <activity android:name=".homework.hm26_h_v_activity"></activity>
+        <activity android:name=".homework.hm_baidu_gupiao_activity"></activity>
+        <activity android:name=".homework.hm37_sdcard_image_activity"></activity>
+        <activity android:name=".homework.hm_upload_teacher_activity"></activity>
     </application>
 
 </manifest>
