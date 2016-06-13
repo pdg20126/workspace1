@@ -91,6 +91,7 @@
         <activity android:name=".homework.hm_baidu_gupiao_activity"></activity>
         <activity android:name=".homework.hm37_sdcard_image_activity"></activity>
         <activity android:name=".homework.hm_upload_teacher_activity"></activity>
+        <activity android:name=".homework.hm_chronometer_activity"></activity>
     </application>
 
 </manifest>
