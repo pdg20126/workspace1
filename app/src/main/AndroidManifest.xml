@@ -113,6 +113,7 @@
         <activity android:name=".homework.hm_chronometer_activity"></activity>
         <activity android:name=".homework.hm_baidumap_activity"></activity>
         <activity android:name=".homework.hm_position_activity"></activity>
+
     </application>
 
 </manifest>

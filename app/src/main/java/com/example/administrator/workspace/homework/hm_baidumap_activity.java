@@ -5,19 +5,28 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.view.Window;
+import android.widget.Toast;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.model.inner.GeoPoint;
 import com.example.administrator.workspace.R;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by Administrator on 2016/6/16.
@@ -25,44 +34,46 @@ import com.example.administrator.workspace.R;
 public class hm_baidumap_activity extends Activity {
     MapView map;
     LocationManager lm;
+    BaiduMap bm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.hm_baidumap_layout);
         /*requestWindowFeature(Window.FEATURE_NO_TITLE);*/
         map = (MapView) findViewById(R.id.mymap);
 
-        BaiduMap bm = map.getMap();
-        bm.setTrafficEnabled(true);
+        bm = map.getMap();
+        // bm.setTrafficEnabled(true);
         // bm.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
         bm.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Location l = lm.getLastKnownLocation(Context.LOCATION_SERVICE);
+        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location l = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        updateView(l);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 300, 10, new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                updateView(location);
+            }
 
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+            }
 
+            @Override
+            public void onProviderEnabled(String provider) {
+                if (ActivityCompat.checkSelfPermission(hm_baidumap_activity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(hm_baidumap_activity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
 
-    /*    bm.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
-        LatLng point = new LatLng(39.963175, 116.400244);
-//构建Marker图标
-        BitmapDescriptor bitmap = BitmapDescriptorFactory
-                .fromResource(R.drawable.map_icon);
-//构建MarkerOption，用于在地图上添加Marker
-        OverlayOptions option = new MarkerOptions()
-                .position(point)
-                .icon(bitmap);
-//在地图上添加Marker，并显示
-        bm.addOverlay(option);*/
-        super.onCreate(savedInstanceState);
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        });
+
     }
 
     @Override
@@ -82,4 +93,36 @@ public class hm_baidumap_activity extends Activity {
         super.onPause();
         map.onPause();
     }
+
+    public void updateView(Location l) {
+        if (l != null) {
+
+            LatLng point = new LatLng(l.getLatitude(), l.getLongitude());
+//构建Marker图标
+            BitmapDescriptor bitmap = BitmapDescriptorFactory
+                    .fromResource(R.drawable.map_icon);
+//构建MarkerOption，用于在地图上添加Marker
+            OverlayOptions option = new MarkerOptions()
+                    .position(point)
+                    .icon(bitmap);
+//在地图上添加Marker，并显示
+            bm.addOverlay(option);
+            bm.setMyLocationEnabled(true);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            Location l1 = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            LatLng p = new LatLng(l1.getLatitude(),l1.getLongitude());
+            //LatLng p = new LatLng(41.808466,123.413759);
+            MapStatus mMapStatus = new MapStatus.Builder().target(p).zoom(18)
+                    .build();
+            MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory
+                    .newMapStatus(mMapStatus);
+            bm.setMapStatus(mMapStatusUpdate);
+        } else {
+            Toast.makeText(hm_baidumap_activity.this, "未能加载地图", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }
