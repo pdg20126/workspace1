@@ -19,14 +19,10 @@ import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.model.inner.GeoPoint;
 import com.example.administrator.workspace.R;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 
 /**
  * Created by Administrator on 2016/6/16.
@@ -48,7 +44,7 @@ public class hm_baidumap_activity extends Activity {
         // bm.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
         bm.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location l = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Location l = lm.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         updateView(l);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 300, 10, new LocationListener() {
             @Override
@@ -66,6 +62,7 @@ public class hm_baidumap_activity extends Activity {
                     return;
                 }
                 Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                //updateView(l);
             }
 
             @Override
@@ -111,7 +108,7 @@ public class hm_baidumap_activity extends Activity {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            Location l1 = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Location l1 = lm.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
             LatLng p = new LatLng(l1.getLatitude(),l1.getLongitude());
             //LatLng p = new LatLng(41.808466,123.413759);
             MapStatus mMapStatus = new MapStatus.Builder().target(p).zoom(18)
@@ -123,6 +120,5 @@ public class hm_baidumap_activity extends Activity {
             Toast.makeText(hm_baidumap_activity.this, "未能加载地图", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 }

@@ -11,7 +11,6 @@ public class hm_baidu_gupiao_bean {
      * errMsg : success
      * retData : {"stockinfo":{"name":"青岛啤酒","code":"00168","date":"2016/06/10 16:01","openningPrice":29.3,"closingPrice":29.2,"hPrice":29.8,"lPrice":28.5,"currentPrice":28.55,"growth":-0.65,"growthPercent":-2.226,"dealnumber":1255999,"turnover":36469333,"52hPrice":50.95,"52lPrice":26.1},"market":{"shanghai":{"name":"上证指数","curdot":2927.159,"curprice":-8.8859,"rate":-0.3,"dealnumber":1430460,"turnover":17737731},"shenzhen":{"name":"深证成指","curdot":10316.82,"curprice":-31.019,"rate":-0.3,"dealnumber":208133522,"turnover":36855377},"DJI":{"name":"道琼斯","date":"2016-06-11 07:33:05","curdot":17865.34,"rate":-0.67,"growth":-119.85,"startdot":17938.82,"closedot":17985.19,"hdot":17938.82,"ldot":17812.34,"turnover":0},"IXIC":{"name":"纳斯达克","date":"2016-06-11 05:40:00","curdot":4894.55,"rate":-1.29,"growth":-64.07,"startdot":4915.15,"closedot":4958.62,"hdot":4917.92,"ldot":4880.61,"turnover":1788746823},"INX":{"name":"纳斯达克","date":"2016-06-11 05:40:00","curdot":2096.07,"rate":-0.92,"growth":-19.41,"startdot":2109.57,"closedot":2115.48,"hdot":2109.57,"ldot":2089.96,"turnover":0},"HSI":{"name":"恒生指数","date":"2016/06/10 16:01","curdot":21042.64,"rate":-1.2,"growth":-255.24,"startdot":21240.08,"closedot":21297.88,"hdot":21270.62,"ldot":21017.98,"turnover":54506497,"52hdot":27470.5,"52ldot":18278.8}}}
      */
-
     private int errNum;
     private String errMsg;
     /**
