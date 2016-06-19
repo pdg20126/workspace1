@@ -9,6 +9,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.view.Menu;
 import android.widget.Toast;
 
 import com.baidu.mapapi.map.BaiduMap;
@@ -38,7 +39,6 @@ public class hm_baidumap_activity extends Activity {
         setContentView(R.layout.hm_baidumap_layout);
         /*requestWindowFeature(Window.FEATURE_NO_TITLE);*/
         map = (MapView) findViewById(R.id.mymap);
-
         bm = map.getMap();
         // bm.setTrafficEnabled(true);
         // bm.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
@@ -90,6 +90,8 @@ public class hm_baidumap_activity extends Activity {
         super.onPause();
         map.onPause();
     }
+
+
 
     public void updateView(Location l) {
         if (l != null) {
