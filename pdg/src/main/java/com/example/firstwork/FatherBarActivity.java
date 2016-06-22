@@ -1,4 +1,4 @@
-package com.example.administrator.workspace.homework;
+package com.example.firstwork;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
-import com.example.administrator.workspace.R;
 
 /**
  * Created by Administrator on 2016/5/26.
@@ -25,7 +23,7 @@ public abstract class FatherBarActivity extends AppCompatActivity {
         Toolbar t = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(t);
         getSupportActionBar().setTitle("我的作业");
-        i=new Intent(this,homeworkActivity.class);
+       // i=new Intent(this,homeworkActivity.class);
          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         t.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
